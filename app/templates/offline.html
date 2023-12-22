@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<section class="bg-light py-5">
+                <div class="container px-5 my-5">
+                    <div class="text-center mb-5">
+                        <h1 class="fw-bolder">Ціни курсів</h1>
+                        <p class="lead fw-normal text-muted mb-0">Ціни на офлайн курси</p>
+                    </div>
+                    <div class="row gx-5 justify-content-center">
+                        <!-- Pricing card free-->
+                        <div class="col-lg-6 col-xl-4">
+                            <div class="card mb-5 mb-xl-0">
+                                <div class="card-body p-5">
+                                    <div class="small text-uppercase fw-bold text-muted">Групові заняття</div>
+                                    <div class="mb-3">
+                                        <span class="display-4 fw-bold">2,000 грн</span>
+                                        <span class="text-muted">/ міс.</span>
+                                    </div>
+                                    <ul class="list-unstyled mb-4">
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            <strong>8 разів на міс</strong>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            Доступ до усього інвентарю студії
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            Жива комунікація з тренером
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            Індивідуальний підхід до кожного
+                                        </li>
+
+                                    </ul>
+                                    <div class="d-grid"><a class="btn btn-primary" href=""
+                                        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/obasarab/group'});return false;">Записатись</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pricing card pro-->
+                        <div class="col-lg-6 col-xl-4">
+                            <div class="card mb-5 mb-xl-0">
+                                <div class="card-body p-5">
+                                    <div class="small text-uppercase fw-bold">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        Індивідуальні заняття
+                                    </div>
+                                    <div class="mb-3">
+                                        <span class="display-4 fw-bold">10,000 грн</span>
+                                        <span class="text-muted">/ міс.</span>
+                                    </div>
+                                    <ul class="list-unstyled mb-4">
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            <strong>10 разів на міс.</strong>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            Гнучкий графік занять
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            Індивідуально підібрані вправи під ваші потреби
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            Комунікація з тренером
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            Можливість зміни терміну занять
+                                        </li>
+
+                                    </ul>
+                                    <div class="d-grid"><a class="btn btn-primary" href=""
+                                        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/obasarab/individual'});return false;">Записатись</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pricing card enterprise-->
+                        <div class="col-lg-6 col-xl-4">
+                            <div class="card">
+                                <div class="card-body p-5">
+                                    <div class="small text-uppercase fw-bold text-muted">Заняття для вагітних</div>
+                                    <div class="mb-3">
+                                        <span class="display-4 fw-bold">2,500</span>
+                                        <span class="text-muted">/ міс.</span>
+                                    </div>
+                                    <ul class="list-unstyled mb-4">
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            <strong>8 занять на міс.</strong>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            Підтримка здорової фізичної форми для здоровʼя мами
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            Індивідуальний підхід до кожної майбутньої матусі
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            Комфортний ритм занять
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-primary"></i>
+                                            Дихальні практики, що можуть зменшити напругу та стрес
+                                        </li>
+
+                                    </ul>
+                                    <div class="d-grid"><a class="btn btn-primary" href=""
+                                        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/obasarab/pregnant'});return false;">Записатись</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+{% endblock %}
