@@ -1,12 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
-from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
-from django.views.generic.list import ListView
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, authenticate, logout, get_user_model
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth import login, authenticate, logout
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView
 from .models import Guest, Club, YogaSession, Reservation
 from .forms import LoginForm, RegistrationGuestForm, ReservationForm, ContactForm
 
@@ -22,6 +21,29 @@ def faq_view(request):
 def portfolio_view(request):
     return render(request, 'portfolio.html', {})
 
+class ReservationView(CreateView):
+    model = Reservation
+    form_class = ReservationForm
+    template_name = "online.html"
+    success_url = reverse_lazy('list')
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['session_code'] = self.kwargs.get('session_id')
+        return initial
+
+    def form_valid(self, form):
+        form.instance.guest_ID = self.request.user
+        return super().form_valid(form)
+
+class ReservationListView(LoginRequiredMixin, ListView):
+    model = Reservation
+    template_name = 'list.html'
+    context_object_name = 'reservations'
+
+    def get_queryset(self):
+        return Reservation.objects.filter(guest_ID=self.request.user).order_by('-booked_on')
+
 def online_view(request):
     sessions = YogaSession.objects.filter(session_type='online')
     return render(request, 'online.html', {'sessions': sessions})
@@ -30,12 +52,16 @@ def offline_view(request):
     sessions = YogaSession.objects.filter(session_type='offline')
     return render(request, 'offline.html', {'sessions': sessions})
 
+User = get_user_model()
+
 def login_view(request):
     form = LoginForm()
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
-            user = authenticate(email=form.cleaned_data['email'], password=form.cleaned_data['password'])
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=email, password=password)
             if user is not None:
                 login(request, user)
                 return redirect('home')

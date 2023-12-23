@@ -47,6 +47,6 @@ class ContactForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
-        self.fields['contact_name'].label = "@TODO Your name:"
-        self.fields['contact_email'].label = "@TODO Your email:"
-        self.fields['content'].label = "@TODO What do you want to say?"
+        self.fields['contact_name'].label = "@TODO Ваше ім'я:"
+        self.fields['contact_email'].label = "@TODO Ваш email:"
+        self.fields['content'].label = "@TODO Що ви хочете сказати?"

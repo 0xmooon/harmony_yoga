@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<section class="bg-light py-5">
+    <div class="container px-5 my-5">
+        <div class="text-center mb-5">
+            <h1 class="fw-bolder">Ваші резервації</h1>
+            <p class="lead fw-normal text-muted mb-0">Перегляньте свої зарезервовані сесії йоги</p>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <!-- Dynamiczne karty rezerwacji -->
+            {% for reservation in reservations %}
+            <div class="col-lg-6 col-xl-4">
+                <div class="card mb-5 mb-xl-0">
+                    <div class="card-body p-5">
+                        <h5 class="card-title">{{ reservation.session_code.get_session_type_display }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ reservation.session_code.start_time|date:"Y-m-d H:i" }} до {{ reservation.session_code.end_time|date:"Y-m-d H:i" }}</h6>
+                        <p class="card-text">Сесія в: {{ reservation.session_code.session_code.name }}</p>
+                        <p class="card-text">Статус: {{ reservation.get_status_display }}</p>
+                        <a href="{% url 'cancel_reservation' reservation.id %}" class="btn btn-danger">Скасувати резервацію</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+                <p>Ви ще не зарезервували жодної сесії.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

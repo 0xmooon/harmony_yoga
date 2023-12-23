@@ -50,6 +50,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = 'app.Guest'
+USERNAME_FIELD = 'email'
+
+AUTHENTICATION_BACKENDS = [
+    'app.email_backend.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 ROOT_URLCONF = 'yoga.urls'
 
 TEMPLATES = [

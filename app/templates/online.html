@@ -18,7 +18,7 @@
                         <h5 class="card-title">{{ session.get_session_type_display }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ session.start_time|date:"Y-m-d H:i" }} до {{ session.end_time|date:"Y-m-d H:i" }}</h6>
                         <p class="card-text">З: {{ session.session_code.name }}</p>
-                        <a class="btn btn-primary">Записатися</a>
+                        <a href="{% url 'create_reservation' session.id %}" class="btn btn-primary">Записатися</a>
                     </div>
                 </div>
             </div>
